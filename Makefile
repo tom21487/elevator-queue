@@ -1,0 +1,44 @@
+ELEVATOR_DEPS := elevator.v $(ENGINE_DEPS) pos_lvl_logic/pos_lvl_logic.v clk_divider/clk_divider.v decoder/decoder.v
+testbench: testbench.v $(ELEVATOR_DEPS)
+	iverilog -o $@ testbench.v $(ELEVATOR_DEPS)
+
+ENGINE_DEPS := engine/engine.v priority_encoder/priority_encoder.v pressed_lvl_in_queue_logic/pressed_lvl_in_queue_logic.v $(QUEUE_LOGIC_DEPS)
+engine/testbench: engine/testbench.v $(ENGINE_DEPS)
+	iverilog -o $@ engine/testbench.v $(ENGINE_DEPS)
+
+QUEUE_LOGIC_DEPS := queue_logic/queue_logic.v $(NEXT_QUEUE_ADD_LOGIC_DEPS) next_tail_add_logic/next_tail_add_logic.v $(NEXT_QUEUE_SUB_LOGIC_DEPS) next_tail_sub_logic/next_tail_sub_logic.v
+queue_logic/testbench: queue_logic/testbench.v $(QUEUE_LOGIC_DEPS)
+	iverilog -o $@ queue_logic/testbench.v $(QUEUE_LOGIC_DEPS)
+
+NEXT_QUEUE_ADD_LOGIC_DEPS := next_queue_add_logic/next_queue_add_logic.v
+next_queue_add_logic/testbench: next_queue_add_logic/testbench.v $(NEXT_QUEUE_ADD_LOGIC_DEPS)
+	iverilog -o $@ next_queue_add_logic/testbench.v $(NEXT_QUEUE_ADD_LOGIC_DEPS)
+
+LVL_0_LOGIC_DEPS := lvl_0_logic/lvl_0_logic.v
+lvl_0_logic/testbench: lvl_0_logic/testbench.v $(LVL_0_LOGIC_DEPS)
+	iverilog -o $@ lvl_0_logic/testbench.v $(LVL_0_LOGIC_DEPS)
+
+LVL_I_LOGIC_DEPS := lvl_i_logic/lvl_i_logic.v
+lvl_i_logic/testbench: lvl_i_logic/testbench.v $(LVL_I_LOGIC_DEPS)
+	iverilog -o $@ lvl_i_logic/testbench.v $(LVL_I_LOGIC_DEPS)
+
+LVL_3_LOGIC_DEPS := lvl_3_logic/lvl_3_logic.v
+lvl_3_logic/testbench: lvl_3_logic/testbench.v $(LVL_3_LOGIC_DEPS)
+	iverilog -o $@ lvl_3_logic/testbench.v $(LVL_3_LOGIC_DEPS)
+
+NEXT_QUEUE_SUB_LOGIC_DEPS := next_queue_sub_logic/next_queue_sub_logic.v $(LVL_0_LOGIC_DEPS) $(LVL_I_LOGIC_DEPS) $(LVL_3_LOGIC_DEPS)
+next_queue_sub_logic/testbench: next_queue_sub_logic/testbench.v $(NEXT_QUEUE_SUB_LOGIC_DEPS)
+	iverilog -o $@ next_queue_sub_logic/testbench.v $(NEXT_QUEUE_SUB_LOGIC_DEPS)
+
+elevator.blif: elevator_tb
+	yosys -p "synth_ice40 -blif $@" $(ELEVATOR_DEPS)
+
+elevator.asc: elevator.blif
+	arachne-pnr -d 1k -P tq144 -p elevator.pcf elevator.blif -o $@
+
+elevator.bin: elevator.asc
+	icepack elevator.asc $@
+
+.PHONY: iceprog
+iceprog: elevator.bin
+	iceprog elevator.bin

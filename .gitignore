@@ -1,0 +1,14 @@
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+README.html
+ref/
+
+# Verilog
+*.vcd

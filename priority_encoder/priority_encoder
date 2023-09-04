@@ -1,0 +1,13 @@
+/* Implements a 4-2 decoder */
+module button_logic(
+  input  [3:0] ipmod, // inverse pmod, active high
+  output       pressed_en,
+  output [1:0] pressed_lvl
+);
+    wire a, b;
+    assign a = ~ipmod[2];
+    assign b = a & ipmod[1];
+    assign pressed_lvl[0] = ipmod[3] & b;
+    assign pressed_lvl[1] = ipmod[3] | ipmod[2];
+    assign pressed_en = out[1] | ipmod[1] | ipmod[0];
+endmodule

@@ -1,0 +1,87 @@
+$date
+	Sat Jul 29 18:20:02 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module testbench $end
+$var wire 12 ! next_queue_sub [11:0] $end
+$var wire 3 " next_tail_sub [2:0] $end
+$var wire 1 # stop_at_pos_lvl $end
+$var reg 4 $ ipmod30 [3:0] $end
+$var reg 2 % pos_lvl [1:0] $end
+$var reg 12 & queue [11:0] $end
+$var reg 3 ' tail [2:0] $end
+$scope module uut $end
+$var wire 4 ( ipmod30 [3:0] $end
+$var wire 12 ) next_queue_sub [11:0] $end
+$var wire 3 * next_tail_sub [2:0] $end
+$var wire 2 + pos_lvl [1:0] $end
+$var wire 1 , pressed_lvl_in_queue $end
+$var wire 12 - queue [11:0] $end
+$var wire 1 # stop_at_pos_lvl $end
+$var wire 3 . tail [2:0] $end
+$var wire 2 / pressed_lvl [1:0] $end
+$var wire 1 0 pressed_en $end
+$scope module pe $end
+$var wire 1 1 a $end
+$var wire 1 2 b $end
+$var wire 4 3 in [3:0] $end
+$var wire 1 0 valid $end
+$var wire 2 4 out [1:0] $end
+$upscope $end
+$scope module pl $end
+$var wire 1 0 pressed_en $end
+$var wire 2 5 pressed_lvl [1:0] $end
+$var wire 1 , pressed_lvl_in_queue $end
+$var wire 12 6 queue [11:0] $end
+$upscope $end
+$scope module q $end
+$var wire 12 7 next_queue_sub [11:0] $end
+$var wire 3 8 next_tail_sub [2:0] $end
+$var wire 2 9 pos_lvl [1:0] $end
+$var wire 1 0 pressed_en $end
+$var wire 2 : pressed_lvl [1:0] $end
+$var wire 1 , pressed_lvl_in_queue $end
+$var wire 12 ; queue [11:0] $end
+$var wire 1 # stop_at_pos_lvl $end
+$var wire 3 < tail [2:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 <
+b0 ;
+b0 :
+b0 9
+b0 8
+b0 7
+b0 6
+b0 5
+b0 4
+b0 3
+02
+11
+00
+b0 /
+b0 .
+b0 -
+0,
+b0 +
+b0 *
+b0 )
+b0 (
+b0 '
+b0 &
+b0 %
+b0 $
+0#
+b0 "
+b0 !
+$end
+#1000000

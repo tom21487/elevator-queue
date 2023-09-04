@@ -1,0 +1,144 @@
+#! /usr/local/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1148-gef01dd1e)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 11;
+:vpi_module "/usr/local/lib/ivl/system.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/lib/ivl/va_math.vpi";
+S_0x18c04b0 .scope module, "testbench" "testbench" 2 4;
+ .timescale -9 -11;
+P_0x18c3000 .param/l "DURATION" 1 2 15, +C4<00000000000000000010011100010000>;
+v0x18dd5e0_0 .var "ipmod30", 3 0;
+L_0x7f2957ea80a8 .functor BUFT 1, C4<000000000000>, C4<0>, C4<0>, C4<0>;
+L_0x7f2957ea8180 .functor BUFT 1, C4<000000000000>, C4<0>, C4<0>, C4<0>;
+RS_0x7f2957ef14c8 .resolv tri, L_0x7f2957ea80a8, L_0x7f2957ea8180;
+v0x18dd6c0_0 .net8 "next_queue_sub", 11 0, RS_0x7f2957ef14c8;  2 drivers
+L_0x7f2957ea80f0 .functor BUFT 1, C4<000>, C4<0>, C4<0>, C4<0>;
+L_0x7f2957ea81c8 .functor BUFT 1, C4<000>, C4<0>, C4<0>, C4<0>;
+RS_0x7f2957ef14f8 .resolv tri, L_0x7f2957ea80f0, L_0x7f2957ea81c8;
+v0x18dd7d0_0 .net8 "next_tail_sub", 2 0, RS_0x7f2957ef14f8;  2 drivers
+v0x18dd8c0_0 .var "pos_lvl", 1 0;
+v0x18dd9d0_0 .var "queue", 11 0;
+L_0x7f2957ea8060 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_0x7f2957ea8138 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+RS_0x7f2957ef1558 .resolv tri, L_0x7f2957ea8060, L_0x7f2957ea8138;
+v0x18ddae0_0 .net8 "stop_at_pos_lvl", 0 0, RS_0x7f2957ef1558;  2 drivers
+v0x18ddbd0_0 .var "tail", 2 0;
+S_0x18c0690 .scope module, "uut" "engine" 2 17, 3 1 0, S_0x18c04b0;
+ .timescale -9 -11;
+    .port_info 0 /INPUT 12 "queue";
+    .port_info 1 /INPUT 4 "ipmod30";
+    .port_info 2 /INPUT 2 "pos_lvl";
+    .port_info 3 /INPUT 3 "tail";
+    .port_info 4 /OUTPUT 1 "stop_at_pos_lvl";
+    .port_info 5 /OUTPUT 12 "next_queue_sub";
+    .port_info 6 /OUTPUT 3 "next_tail_sub";
+v0x18dccb0_0 .net "ipmod30", 3 0, v0x18dd5e0_0;  1 drivers
+v0x18dcd90_0 .net8 "next_queue_sub", 11 0, RS_0x7f2957ef14c8;  alias, 2 drivers
+v0x18dce60_0 .net8 "next_tail_sub", 2 0, RS_0x7f2957ef14f8;  alias, 2 drivers
+v0x18dcf60_0 .net "pos_lvl", 1 0, v0x18dd8c0_0;  1 drivers
+v0x18dd030_0 .net "pressed_en", 0 0, L_0x18de980;  1 drivers
+v0x18dd0d0_0 .net "pressed_lvl", 1 0, L_0x18de200;  1 drivers
+L_0x7f2957ea8018 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x18dd170_0 .net "pressed_lvl_in_queue", 0 0, L_0x7f2957ea8018;  1 drivers
+v0x18dd260_0 .net "queue", 11 0, v0x18dd9d0_0;  1 drivers
+v0x18dd350_0 .net8 "stop_at_pos_lvl", 0 0, RS_0x7f2957ef1558;  alias, 2 drivers
+v0x18dd480_0 .net "tail", 2 0, v0x18ddbd0_0;  1 drivers
+S_0x18bda50 .scope module, "pe" "priority_encoder" 3 15, 4 2 0, S_0x18c0690;
+ .timescale -9 -11;
+    .port_info 0 /INPUT 4 "in";
+    .port_info 1 /OUTPUT 1 "valid";
+    .port_info 2 /OUTPUT 2 "out";
+L_0x18ddd80 .functor NOT 1, L_0x18ddce0, C4<0>, C4<0>, C4<0>;
+L_0x18ddf90 .functor AND 1, L_0x18ddd80, L_0x18dde60, C4<1>, C4<1>;
+L_0x18de0f0 .functor AND 1, L_0x18de050, L_0x18ddf90, C4<1>, C4<1>;
+L_0x18de4e0 .functor OR 1, L_0x18de360, L_0x18de400, C4<0>, C4<0>;
+L_0x18de7d0 .functor OR 1, L_0x18de640, L_0x18de6e0, C4<0>, C4<0>;
+L_0x18de980 .functor OR 1, L_0x18de7d0, L_0x18de8e0, C4<0>, C4<0>;
+v0x18bdc30_0 .net *"_ivl_1", 0 0, L_0x18ddce0;  1 drivers
+v0x18dae00_0 .net *"_ivl_11", 0 0, L_0x18de050;  1 drivers
+v0x18daee0_0 .net *"_ivl_12", 0 0, L_0x18de0f0;  1 drivers
+v0x18dafa0_0 .net *"_ivl_18", 0 0, L_0x18de360;  1 drivers
+v0x18db080_0 .net *"_ivl_20", 0 0, L_0x18de400;  1 drivers
+v0x18db1b0_0 .net *"_ivl_21", 0 0, L_0x18de4e0;  1 drivers
+v0x18db290_0 .net *"_ivl_24", 0 0, L_0x18de640;  1 drivers
+v0x18db370_0 .net *"_ivl_26", 0 0, L_0x18de6e0;  1 drivers
+v0x18db450_0 .net *"_ivl_27", 0 0, L_0x18de7d0;  1 drivers
+v0x18db530_0 .net *"_ivl_30", 0 0, L_0x18de8e0;  1 drivers
+v0x18db610_0 .net *"_ivl_5", 0 0, L_0x18dde60;  1 drivers
+v0x18db6f0_0 .net "a", 0 0, L_0x18ddd80;  1 drivers
+v0x18db7b0_0 .net "b", 0 0, L_0x18ddf90;  1 drivers
+v0x18db870_0 .net "in", 3 0, v0x18dd5e0_0;  alias, 1 drivers
+v0x18db950_0 .net "out", 1 0, L_0x18de200;  alias, 1 drivers
+v0x18dba30_0 .net "valid", 0 0, L_0x18de980;  alias, 1 drivers
+L_0x18ddce0 .part v0x18dd5e0_0, 2, 1;
+L_0x18dde60 .part v0x18dd5e0_0, 1, 1;
+L_0x18de050 .part v0x18dd5e0_0, 3, 1;
+L_0x18de200 .concat8 [ 1 1 0 0], L_0x18de0f0, L_0x18de4e0;
+L_0x18de360 .part v0x18dd5e0_0, 3, 1;
+L_0x18de400 .part v0x18dd5e0_0, 2, 1;
+L_0x18de640 .part L_0x18de200, 1, 1;
+L_0x18de6e0 .part v0x18dd5e0_0, 1, 1;
+L_0x18de8e0 .part v0x18dd5e0_0, 0, 1;
+S_0x18dbb70 .scope module, "pl" "pressed_lvl_in_queue_logic" 3 19, 5 1 0, S_0x18c0690;
+ .timescale -9 -11;
+    .port_info 0 /INPUT 1 "pressed_en";
+    .port_info 1 /INPUT 2 "pressed_lvl";
+    .port_info 2 /INPUT 12 "queue";
+    .port_info 3 /OUTPUT 1 "pressed_lvl_in_queue";
+v0x18dbd70_0 .net "pressed_en", 0 0, L_0x18de980;  alias, 1 drivers
+v0x18dbe10_0 .net "pressed_lvl", 1 0, L_0x18de200;  alias, 1 drivers
+v0x18dbeb0_0 .net "pressed_lvl_in_queue", 0 0, L_0x7f2957ea8018;  alias, 1 drivers
+v0x18dbf50_0 .net "queue", 11 0, v0x18dd9d0_0;  alias, 1 drivers
+S_0x18dc0c0 .scope module, "q" "queue_logic" 3 23, 6 1 0, S_0x18c0690;
+ .timescale -9 -11;
+    .port_info 0 /INPUT 1 "pressed_en";
+    .port_info 1 /INPUT 2 "pressed_lvl";
+    .port_info 2 /INPUT 1 "pressed_lvl_in_queue";
+    .port_info 3 /INPUT 2 "pos_lvl";
+    .port_info 4 /INPUT 12 "queue";
+    .port_info 5 /INPUT 3 "tail";
+    .port_info 6 /OUTPUT 1 "stop_at_pos_lvl";
+    .port_info 7 /OUTPUT 12 "next_queue_sub";
+    .port_info 8 /OUTPUT 3 "next_tail_sub";
+v0x18dc3d0_0 .net8 "next_queue_sub", 11 0, RS_0x7f2957ef14c8;  alias, 2 drivers
+v0x18dc4b0_0 .net8 "next_tail_sub", 2 0, RS_0x7f2957ef14f8;  alias, 2 drivers
+v0x18dc590_0 .net "pos_lvl", 1 0, v0x18dd8c0_0;  alias, 1 drivers
+v0x18dc680_0 .net "pressed_en", 0 0, L_0x18de980;  alias, 1 drivers
+v0x18dc770_0 .net "pressed_lvl", 1 0, L_0x18de200;  alias, 1 drivers
+v0x18dc8d0_0 .net "pressed_lvl_in_queue", 0 0, L_0x7f2957ea8018;  alias, 1 drivers
+v0x18dc970_0 .net "queue", 11 0, v0x18dd9d0_0;  alias, 1 drivers
+v0x18dca10_0 .net8 "stop_at_pos_lvl", 0 0, RS_0x7f2957ef1558;  alias, 2 drivers
+v0x18dcab0_0 .net "tail", 2 0, v0x18ddbd0_0;  alias, 1 drivers
+    .scope S_0x18c04b0;
+T_0 ;
+    %pushi/vec4 0, 0, 12;
+    %store/vec4 v0x18dd9d0_0, 0, 12;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0x18dd5e0_0, 0, 4;
+    %pushi/vec4 0, 0, 2;
+    %store/vec4 v0x18dd8c0_0, 0, 2;
+    %pushi/vec4 0, 0, 3;
+    %store/vec4 v0x18ddbd0_0, 0, 3;
+    %end;
+    .thread T_0;
+    .scope S_0x18c04b0;
+T_1 ;
+    %vpi_call 2 38 "$dumpfile", "testbench.vcd" {0 0 0};
+    %vpi_call 2 40 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x18c04b0 {0 0 0};
+    %delay 1000000, 0;
+    %vpi_call 2 44 "$display", "Finished!" {0 0 0};
+    %vpi_call 2 45 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 7;
+    "N/A";
+    "<interactive>";
+    "engine/testbench.v";
+    "engine/engine.v";
+    "priority_encoder/priority_encoder.v";
+    "pressed_lvl_in_queue_logic/pressed_lvl_in_queue_logic.v";
+    "queue_logic/queue_logic.v";

@@ -1,0 +1,58 @@
+$date
+	Sun Jul 30 14:12:15 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module testbench $end
+$var wire 8 ! next_queue_add [7:0] $end
+$var reg 1 " add_new_lvl $end
+$var reg 2 # pressed_lvl [1:0] $end
+$var reg 8 $ queue [7:0] $end
+$var reg 3 % tail [2:0] $end
+$scope module uut $end
+$var wire 1 " add_new_lvl $end
+$var wire 2 & pressed_lvl [1:0] $end
+$var wire 8 ' queue [7:0] $end
+$var wire 3 ( tail [2:0] $end
+$var wire 8 ) next_queue_add [7:0] $end
+$scope begin genblk1[0] $end
+$upscope $end
+$scope begin genblk1[1] $end
+$upscope $end
+$scope begin genblk1[2] $end
+$upscope $end
+$scope begin genblk1[3] $end
+$upscope $end
+$upscope $end
+$scope task check_queue $end
+$var reg 8 * queue_expected [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx *
+b0 )
+b0 (
+b0 '
+b0 &
+b0 %
+b0 $
+b0 #
+0"
+b0 !
+$end
+#1000
+b10 !
+b10 )
+b10 #
+b10 &
+1"
+b0 *
+#2000
+b10 *
+#1000000
