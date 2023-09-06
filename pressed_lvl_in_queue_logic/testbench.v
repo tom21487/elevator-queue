@@ -13,27 +13,31 @@ module testbench();
     localparam D = 2'b11;
 
     // 寄存器（输入）
-    reg my_input;
+    reg [1:0] pressed_lvl;
+    reg [7:0] queue;
+    reg [2:0] tail;
     // 导线（输出）
-    wire my_output;
+    wire pressed_lvl_in_queue;
     // 预期输出
-    reg expected;
+    reg pressed_lvl_in_queue_expected;
 
     // Instantiate the unit under test (UUT)
-    my_module uut(
+    pressed_lvl_in_queue_logic uut(
         // 输入
-        .my_input(my_input),
+	.pressed_lvl(pressed_lvl),
+	.queue(queue),
+	.tail(tail),
         // 输出
-        .my_output(my_output)
+        .pressed_lvl_in_queue(pressed_lvl_in_queue)
     );
 
     // 验证输出值
     task check_ans();
 	begin
-            if (my_output != expected) begin
+            if (pressed_lvl_in_queue != pressed_lvl_in_queue_expected) begin
 		$display("ERROR: output mismatch!");
-		$display("expected: %b", expected);
-		$display("got:      %b", my_output);
+		$display("expected: %b", pressed_lvl_in_queue_expected);
+		$display("got:      %b", pressed_lvl_in_queue);
 		$finish;
             end
 	end
@@ -41,13 +45,36 @@ module testbench();
 
     // Toggle inputs and check output
     initial begin
-        my_input = 0;
-        expected = 0;
+	// Test 0: Pressed lvl in queue.
+        pressed_lvl = B;
+	queue[1:0] = A;
+	queue[3:2] = B;
+	queue[5:4] = C;
+	queue[7:6] = D;
+        tail = 4;
+	pressed_lvl_in_queue_expected = 1;
         #10;
         check_ans();
 
-        my_input = 0;
-        expected = 0;
+	// Test 1: Pressed lvl not in queue.
+        pressed_lvl = D;
+	queue[1:0] = A;
+	queue[3:2] = B;
+	queue[5:4] = C;
+	queue[7:6] = C; // This situation could happen from a shift up.
+        tail = 3;
+	pressed_lvl_in_queue_expected = 0;
+        #10;
+        check_ans();
+
+	// Test 2: Pressed lvl in queue but tail is invalid.
+        pressed_lvl = D;
+	queue[1:0] = A;
+	queue[3:2] = B;
+	queue[5:4] = C;
+	queue[7:6] = D;
+        tail = 3;
+	pressed_lvl_in_queue_expected = 0;
         #10;
         check_ans();
     end

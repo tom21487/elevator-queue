@@ -13,7 +13,7 @@ module queue_logic (
     wire [7:0] next_queue_add;
     wire [2:0] next_tail_add;
     // 组合逻辑
-    add_new_level_logic anl(
+    add_new_lvl_logic anl(
         // 输入
 	.pressed_en(pressed_en),
         .pressed_lvl(pressed_lvl),

@@ -1,5 +1,5 @@
 $date
-	Sun Jul 30 12:21:47 2023
+	Tue Sep  5 14:41:22 2023
 $end
 $version
 	Icarus Verilog
@@ -8,92 +8,491 @@ $timescale
 	10ps
 $end
 $scope module testbench $end
-$var wire 12 ! next_queue_sub [11:0] $end
+$var wire 1 ! stop_at_pos_lvl $end
 $var wire 3 " next_tail_sub [2:0] $end
-$var wire 1 # stop_at_pos_lvl $end
-$var reg 2 $ pos_lvl [1:0] $end
-$var reg 1 % pressed_en $end
-$var reg 2 & pressed_lvl [1:0] $end
-$var reg 1 ' pressed_lvl_in_queue $end
-$var reg 12 ( queue [11:0] $end
-$var reg 3 ) tail [2:0] $end
+$var wire 8 # next_queue_sub [7:0] $end
+$var parameter 2 $ A $end
+$var parameter 2 % B $end
+$var parameter 2 & C $end
+$var parameter 2 ' D $end
+$var parameter 32 ( DURATION $end
+$var reg 8 ) next_queue_sub_expected [7:0] $end
+$var reg 3 * next_tail_sub_expected [2:0] $end
+$var reg 2 + pos_lvl [1:0] $end
+$var reg 1 , pressed_en $end
+$var reg 2 - pressed_lvl [1:0] $end
+$var reg 8 . queue [7:0] $end
+$var reg 1 / stop_at_pos_lvl_expected $end
+$var reg 3 0 tail [2:0] $end
 $scope module uut $end
-$var wire 1 * add_new_lvl $end
-$var wire 12 + next_queue_add [11:0] $end
-$var wire 12 , next_queue_sub [11:0] $end
-$var wire 3 - next_tail_add [2:0] $end
-$var wire 3 . next_tail_sub [2:0] $end
-$var wire 2 / pos_lvl [1:0] $end
-$var wire 1 % pressed_en $end
-$var wire 2 0 pressed_lvl [1:0] $end
-$var wire 1 ' pressed_lvl_in_queue $end
-$var wire 12 1 queue [11:0] $end
-$var wire 1 2 shift0 $end
-$var wire 1 3 shift3 $end
-$var wire 1 # stop_at_pos_lvl $end
+$var wire 2 1 pos_lvl [1:0] $end
+$var wire 1 , pressed_en $end
+$var wire 2 2 pressed_lvl [1:0] $end
+$var wire 8 3 queue [7:0] $end
 $var wire 3 4 tail [2:0] $end
+$var wire 1 ! stop_at_pos_lvl $end
+$var wire 3 5 next_tail_sub [2:0] $end
+$var wire 3 6 next_tail_add [2:0] $end
+$var wire 8 7 next_queue_sub [7:0] $end
+$var wire 8 8 next_queue_add [7:0] $end
+$var wire 1 9 add_new_lvl $end
+$scope module anl $end
+$var wire 1 9 add_new_lvl $end
+$var wire 1 , pressed_en $end
+$var wire 2 : pressed_lvl [1:0] $end
+$var wire 8 ; queue [7:0] $end
+$var wire 3 < tail [2:0] $end
+$var wire 1 = pressed_lvl_in_queue $end
+$scope module pliq $end
+$var wire 2 > pressed_lvl [1:0] $end
+$var wire 8 ? queue [7:0] $end
+$var wire 3 @ tail [2:0] $end
+$var wire 4 A pressed_lvl_in_qentry [3:0] $end
+$var reg 1 = pressed_lvl_in_queue $end
+$var integer 32 B a_idx [31:0] $end
+$scope begin genblk1[0] $end
+$var parameter 2 C g_idx $end
+$upscope $end
+$scope begin genblk1[1] $end
+$var parameter 2 D g_idx $end
+$upscope $end
+$scope begin genblk1[2] $end
+$var parameter 3 E g_idx $end
+$upscope $end
+$scope begin genblk1[3] $end
+$var parameter 3 F g_idx $end
+$upscope $end
+$upscope $end
+$upscope $end
 $scope module nqa $end
-$var wire 1 * add_new_lvl $end
-$var wire 12 5 next_queue_add [11:0] $end
-$var wire 2 6 pressed_lvl [1:0] $end
-$var wire 12 7 queue [11:0] $end
-$var wire 3 8 tail [2:0] $end
+$var wire 1 9 add_new_lvl $end
+$var wire 2 G pressed_lvl [1:0] $end
+$var wire 8 H queue [7:0] $end
+$var wire 3 I tail [2:0] $end
+$var wire 8 J next_queue_add [7:0] $end
+$scope begin genblk1[0] $end
+$var parameter 2 K i $end
+$upscope $end
+$scope begin genblk1[1] $end
+$var parameter 2 L i $end
+$upscope $end
+$scope begin genblk1[2] $end
+$var parameter 3 M i $end
+$upscope $end
+$scope begin genblk1[3] $end
+$var parameter 3 N i $end
+$upscope $end
 $upscope $end
 $scope module nqs $end
-$var wire 12 9 next_queue_add [11:0] $end
-$var wire 12 : next_queue_sub [11:0] $end
-$var wire 3 ; next_tail_add [2:0] $end
-$var wire 2 < pos_lvl [1:0] $end
-$var wire 1 2 shift0 $end
-$var wire 1 3 shift3 $end
-$var wire 1 # stop_at_pos_lvl $end
+$var wire 8 O next_queue_add [7:0] $end
+$var wire 2 P pos_lvl [1:0] $end
+$var wire 1 ! stop_at_pos_lvl $end
+$var wire 4 Q shift [3:0] $end
+$var wire 3 R next_tail_add [2:0] $end
+$var wire 8 S next_queue_sub [7:0] $end
+$scope begin genblk1[1] $end
+$var parameter 2 T i $end
+$scope module l1 $end
+$var wire 2 U next_queue_add_i [1:0] $end
+$var wire 2 V next_queue_add_ip1 [1:0] $end
+$var wire 2 W pos_lvl [1:0] $end
+$var wire 1 X shift_i $end
+$var wire 1 Y shift_im1 $end
+$var wire 3 Z next_tail_add [2:0] $end
+$var wire 2 [ next_queue_sub_i [1:0] $end
+$var parameter 32 \ i $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[2] $end
+$var parameter 3 ] i $end
+$scope module l1 $end
+$var wire 2 ^ next_queue_add_i [1:0] $end
+$var wire 2 _ next_queue_add_ip1 [1:0] $end
+$var wire 2 ` pos_lvl [1:0] $end
+$var wire 1 a shift_i $end
+$var wire 1 b shift_im1 $end
+$var wire 3 c next_tail_add [2:0] $end
+$var wire 2 d next_queue_sub_i [1:0] $end
+$var parameter 32 e i $end
+$upscope $end
+$upscope $end
+$scope module l0 $end
+$var wire 2 f next_queue_add_0 [1:0] $end
+$var wire 2 g next_queue_add_1 [1:0] $end
+$var wire 2 h pos_lvl [1:0] $end
+$var wire 1 i shift_0 $end
+$var wire 3 j next_tail_add [2:0] $end
+$var wire 2 k next_queue_sub_0 [1:0] $end
+$upscope $end
+$scope module l3 $end
+$var wire 2 l next_queue_add_3 [1:0] $end
+$var wire 2 m next_queue_sub_3 [1:0] $end
+$var wire 2 n pos_lvl [1:0] $end
+$var wire 1 o shift_2 $end
+$var wire 1 p shift_3 $end
+$var wire 3 q next_tail_add [2:0] $end
+$upscope $end
 $upscope $end
 $scope module nta $end
-$var wire 1 * add_new_lvl $end
-$var wire 3 = next_tail_add [2:0] $end
-$var wire 3 > tail [2:0] $end
+$var wire 1 9 add_new_lvl $end
+$var wire 3 r tail [2:0] $end
+$var wire 3 s next_tail_add [2:0] $end
 $upscope $end
 $scope module nts $end
-$var wire 3 ? next_tail_add [2:0] $end
-$var wire 3 @ next_tail_sub [2:0] $end
-$var wire 1 3 shift3 $end
+$var wire 3 t next_tail_add [2:0] $end
+$var wire 1 ! stop_at_pos_lvl $end
+$var wire 3 u next_tail_sub [2:0] $end
 $upscope $end
+$upscope $end
+$scope task check_ans $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10 e
+b10 ]
+b1 \
+b1 T
+b11 N
+b10 M
+b1 L
+b0 K
+b11 F
+b10 E
+b1 D
+b0 C
+b10011100010000 (
+b11 '
+b10 &
+b1 %
+b0 $
+$end
 #0
 $dumpvars
-b0 @
-b0 ?
-b0 >
-b0 =
-b0 <
-b0 ;
-b0 :
-b0 9
-b0 8
-b0 7
-b0 6
-b0 5
-b0 4
-03
-z2
+b11 u
+b11 t
+b11 s
+b10 r
+b11 q
+0p
+0o
+b0 n
+b0 m
+b0 l
+b1 k
+b11 j
+0i
+b0 h
+b10 g
+b1 f
+b11 d
+b11 c
+0b
+0a
+b0 `
+b0 _
+b11 ^
+b10 [
+b11 Z
+0Y
+0X
+b0 W
+b11 V
+b10 U
+b111001 S
+b11 R
+b0 Q
+b0 P
+b111001 O
+b111001 J
+b10 I
+b111001 H
+b11 G
+b100 B
+b0 A
+b10 @
+b111001 ?
+b11 >
+0=
+b10 <
+b111001 ;
+b11 :
+19
+b111001 8
+b111001 7
+b11 6
+b11 5
+b10 4
+b111001 3
+b11 2
 b0 1
-b0 0
-b0 /
-b0 .
-b0 -
-b0 ,
+b10 0
+0/
+b111001 .
+b11 -
+1,
 b0 +
-0*
-b0 )
-b0 (
-0'
-b0 &
-0%
-b0 $
-0#
-b0 "
-b0 !
+b11 *
+b111001 )
+b111001 #
+b11 "
+0!
 $end
+#1000
+1!
+1p
+1o
+1a
+b11 d
+b0 k
+b1 [
+1b
+b1 V
+b1 ^
+b0 f
+b11 _
+b11110100 #
+b11110100 7
+b11110100 S
+b11 m
+b11 l
+b1110 Q
+1X
+b10 "
+b10 5
+b10 u
+b11011000 8
+b11011000 J
+b11011000 O
+09
+b11 6
+b11 R
+b11 Z
+b11 c
+b11 j
+b11 q
+b11 s
+b11 t
+1/
+b10 *
+b11110100 )
+0,
+b10 +
+b10 1
+b10 P
+b10 W
+b10 `
+b10 h
+b10 n
+b11 0
+b11 4
+b11 <
+b11 @
+b11 I
+b11 r
+b11011000 .
+b11011000 3
+b11011000 ;
+b11011000 ?
+b11011000 H
+#2000
+0!
+0p
+b1 d
+0o
+0a
+b11011000 #
+b11011000 7
+b11011000 S
+b10 [
+0b
+b0 Q
+0X
+1=
+b100 B
+b1 "
+b1 5
+b1 u
+b1 A
+b1 6
+b1 R
+b1 Z
+b1 c
+b1 j
+b1 q
+b1 s
+b1 t
+0/
+b1 *
+b11011000 )
+b0 -
+b0 2
+b0 :
+b0 >
+b0 G
+b1 0
+b1 4
+b1 <
+b1 @
+b1 I
+b1 r
+#3000
+b11 d
+b11 V
+b11 ^
+b1 _
+b1111000 #
+b1111000 7
+b1111000 S
+b1 m
+b1 l
+b100 B
+0=
+b1111000 8
+b1111000 J
+b1111000 O
+b0 A
+b1111000 )
+b1 -
+b1 2
+b1 :
+b1 >
+b1 G
+b11 +
+b11 1
+b11 P
+b11 W
+b11 `
+b11 h
+b11 n
+b1111000 .
+b1111000 3
+b1111000 ;
+b1111000 ?
+b1111000 H
+#4000
+1!
+1p
+b0 d
+1o
+1a
+1b
+1X
+b11 [
+1Y
+b0 U
+b0 g
+b1111 Q
+1i
+b0 k
+b1 "
+b1 5
+b1 u
+b1 f
+b0 _
+b1100 #
+b1100 7
+b1100 S
+b0 m
+b0 l
+b10 6
+b10 R
+b10 Z
+b10 c
+b10 j
+b10 q
+b10 s
+b10 t
+b110001 8
+b110001 J
+b110001 O
+19
+1/
+b1100 )
+b0 -
+b0 2
+b0 :
+b0 >
+b0 G
+1,
+b1 +
+b1 1
+b1 P
+b1 W
+b1 `
+b1 h
+b1 n
+b111001 .
+b111001 3
+b111001 ;
+b111001 ?
+b111001 H
+#5000
+1!
+1p
+1o
+1a
+1b
+09
+b0 [
+b1 d
+1X
+b11 f
+b0 V
+b0 ^
+b1 _
+b1 m
+b1 l
+b10 U
+b10 g
+b1010011 #
+b1010011 7
+b1010011 S
+b11 k
+0Y
+1=
+b100 B
+b11 "
+b11 5
+b11 u
+b1001011 8
+b1001011 J
+b1001011 O
+b1110 Q
+0i
+b10 A
+b100 6
+b100 R
+b100 Z
+b100 c
+b100 j
+b100 q
+b100 s
+b100 t
+b11 *
+b1010011 )
+b10 -
+b10 2
+b10 :
+b10 >
+b10 G
+b10 +
+b10 1
+b10 P
+b10 W
+b10 `
+b10 h
+b10 n
+b100 0
+b100 4
+b100 <
+b100 @
+b100 I
+b100 r
+b1001011 .
+b1001011 3
+b1001011 ;
+b1001011 ?
+b1001011 H
 #1000000
