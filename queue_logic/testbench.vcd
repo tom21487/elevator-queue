@@ -1,5 +1,5 @@
 $date
-	Sat Oct 21 13:22:20 2023
+	Sat Oct 21 14:07:28 2023
 $end
 $version
 	Icarus Verilog
@@ -8,29 +8,29 @@ $timescale
 	10ps
 $end
 $scope module testbench $end
-$var wire 1 ! stop_at_pos_lvl $end
-$var wire 3 " next_tail_sub [2:0] $end
-$var wire 8 # next_queue_sub [7:0] $end
+$var wire 3 ! next_tail_sub [2:0] $end
+$var wire 8 " next_queue_sub [7:0] $end
+$var wire 1 # current_entry_was_in_queue $end
 $var parameter 2 $ A $end
 $var parameter 2 % B $end
 $var parameter 2 & C $end
 $var parameter 2 ' D $end
 $var parameter 32 ( DURATION $end
-$var reg 8 ) next_queue_sub_expected [7:0] $end
-$var reg 3 * next_tail_sub_expected [2:0] $end
-$var reg 2 + pos_lvl [1:0] $end
-$var reg 1 , pressed_en $end
-$var reg 2 - pressed_lvl [1:0] $end
-$var reg 8 . queue [7:0] $end
-$var reg 1 / stop_at_pos_lvl_expected $end
+$var reg 1 ) add_en $end
+$var reg 2 * added_entry [1:0] $end
+$var reg 2 + current_entry [1:0] $end
+$var reg 1 , current_entry_was_in_queue_expected $end
+$var reg 8 - next_queue_sub_expected [7:0] $end
+$var reg 3 . next_tail_sub_expected [2:0] $end
+$var reg 8 / queue [7:0] $end
 $var reg 3 0 tail [2:0] $end
 $scope module uut $end
 $var wire 2 1 pos_lvl [1:0] $end
-$var wire 1 , pressed_en $end
+$var wire 1 ) pressed_en $end
 $var wire 2 2 pressed_lvl [1:0] $end
 $var wire 8 3 queue [7:0] $end
 $var wire 3 4 tail [2:0] $end
-$var wire 1 ! stop_at_pos_lvl $end
+$var wire 1 # stop_at_pos_lvl $end
 $var wire 3 5 next_tail_sub [2:0] $end
 $var wire 3 6 next_tail_add [2:0] $end
 $var wire 8 7 next_queue_sub [7:0] $end
@@ -38,7 +38,7 @@ $var wire 8 8 next_queue_add [7:0] $end
 $var wire 1 9 add_new_lvl $end
 $scope module anl $end
 $var wire 1 9 add_new_lvl $end
-$var wire 1 , pressed_en $end
+$var wire 1 ) pressed_en $end
 $var wire 2 : pressed_lvl [1:0] $end
 $var wire 8 ; queue [7:0] $end
 $var wire 3 < tail [2:0] $end
@@ -86,7 +86,7 @@ $upscope $end
 $scope module nqs $end
 $var wire 8 O next_queue_add [7:0] $end
 $var wire 2 P pos_lvl [1:0] $end
-$var wire 1 ! stop_at_pos_lvl $end
+$var wire 1 # stop_at_pos_lvl $end
 $var wire 4 Q shift [3:0] $end
 $var wire 3 R next_tail_add [2:0] $end
 $var wire 8 S next_queue_sub [7:0] $end
@@ -140,7 +140,7 @@ $var wire 3 s next_tail_add [2:0] $end
 $upscope $end
 $scope module nts $end
 $var wire 3 t next_tail_add [2:0] $end
-$var wire 1 ! stop_at_pos_lvl $end
+$var wire 1 # stop_at_pos_lvl $end
 $var wire 3 u next_tail_sub [2:0] $end
 $upscope $end
 $upscope $end
@@ -228,19 +228,19 @@ b111001 3
 b11 2
 b0 1
 b10 0
-0/
-b111001 .
-b11 -
-1,
+b111001 /
+b11 .
+b111001 -
+0,
 b0 +
 b11 *
-b111001 )
-b111001 #
-b11 "
-0!
+1)
+0#
+b111001 "
+b11 !
 $end
 #1000
-1!
+1#
 1p
 1o
 1a
@@ -252,14 +252,14 @@ b1 V
 b1 ^
 b0 f
 b11 _
-b11110100 #
+b11110100 "
 b11110100 7
 b11110100 S
 b11 m
 b11 l
 b1110 Q
 1X
-b10 "
+b10 !
 b10 5
 b10 u
 b11011000 8
@@ -274,10 +274,10 @@ b11 j
 b11 q
 b11 s
 b11 t
-1/
-b10 *
-b11110100 )
-0,
+1,
+b10 .
+b11110100 -
+0)
 b10 +
 b10 1
 b10 P
@@ -291,20 +291,20 @@ b11 <
 b11 @
 b11 I
 b11 r
-b11011000 .
+b11011000 /
 b11011000 3
 b11011000 ;
 b11011000 ?
 b11011000 H
 #2000
-0!
+0#
 0p
 b1 d
 0o
 0a
 b10 U
 b10 g
-b11011000 #
+b11011000 "
 b11011000 7
 b11011000 S
 b10 [
@@ -316,7 +316,7 @@ b0 Q
 0X
 1=
 b100 B
-b1 "
+b1 !
 b1 5
 b1 u
 b1 A
@@ -329,15 +329,15 @@ b1 j
 b1 q
 b1 s
 b1 t
-0/
-b1 *
-b11011000 )
-b0 -
+0,
+b1 .
+b11011000 -
+b0 *
 b0 2
 b0 :
 b0 >
 b0 G
-1,
+1)
 b1 0
 b1 4
 b1 <
@@ -349,7 +349,7 @@ b11 d
 b11 V
 b11 ^
 b1 _
-b1111000 #
+b1111000 "
 b1111000 7
 b1111000 S
 b1 m
@@ -360,13 +360,13 @@ b1111000 8
 b1111000 J
 b1111000 O
 b0 A
-b1111000 )
-b1 -
+b1111000 -
+b1 *
 b1 2
 b1 :
 b1 >
 b1 G
-0,
+0)
 b11 +
 b11 1
 b11 P
@@ -374,13 +374,13 @@ b11 W
 b11 `
 b11 h
 b11 n
-b1111000 .
+b1111000 /
 b1111000 3
 b1111000 ;
 b1111000 ?
 b1111000 H
 #4000
-1!
+1#
 1p
 b0 d
 1o
@@ -394,12 +394,12 @@ b0 g
 b1111 Q
 1i
 b0 k
-b1 "
+b1 !
 b1 5
 b1 u
 b1 f
 b0 _
-b1100 #
+b1100 "
 b1100 7
 b1100 S
 b0 m
@@ -416,14 +416,14 @@ b110001 8
 b110001 J
 b110001 O
 19
-1/
-b1100 )
-b0 -
+1,
+b1100 -
+b0 *
 b0 2
 b0 :
 b0 >
 b0 G
-1,
+1)
 b1 +
 b1 1
 b1 P
@@ -431,13 +431,13 @@ b1 W
 b1 `
 b1 h
 b1 n
-b111001 .
+b111001 /
 b111001 3
 b111001 ;
 b111001 ?
 b111001 H
 #5000
-1!
+1#
 1p
 1o
 1a
@@ -454,14 +454,14 @@ b1 m
 b1 l
 b10 U
 b10 g
-b1010011 #
+b1010011 "
 b1010011 7
 b1010011 S
 b11 k
 0Y
 1=
 b100 B
-b11 "
+b11 !
 b11 5
 b11 u
 b1001011 8
@@ -478,9 +478,9 @@ b100 j
 b100 q
 b100 s
 b100 t
-b11 *
-b1010011 )
-b10 -
+b11 .
+b1010011 -
+b10 *
 b10 2
 b10 :
 b10 >
@@ -498,13 +498,13 @@ b100 <
 b100 @
 b100 I
 b100 r
-b1001011 .
+b1001011 /
 b1001011 3
 b1001011 ;
 b1001011 ?
 b1001011 H
 #6000
-b10 "
+b10 !
 b10 5
 b10 u
 b11 6
@@ -515,7 +515,7 @@ b11 j
 b11 q
 b11 s
 b11 t
-b10 *
+b10 .
 b11 0
 b11 4
 b11 <
