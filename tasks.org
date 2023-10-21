@@ -2,4 +2,4 @@
 - [X] Priority encoder testbench
 - [X] Fix queue_logic/testbench.v add/sub order
       Actually it's fine
-- [ ] Update project scope: "elevator-style" queue for verification
+- [X] Update project scope: "elevator-style" queue for verification
