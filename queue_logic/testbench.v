@@ -69,18 +69,18 @@ module testbench();
 
     // Toggle inputs
     initial begin
-	    /*
+        /*
          Test 0: add added_entry
-         Before:
-         - Current state: A
-         - Queued states: [ B, C ]
+         Input:
+         - Current entry: A
+         - Queued entries: [ B, C ]
          - State to add: D
-         After:
-         - Current state in queue: no
-         - Queued states: [ B, C, D ]     
-         */
-	    queue = { A, D, C, B };
-	    tail = 2;
+         Output:
+         - Current entry in queue: no
+         - Queued entries: [ B, C, D ]     
+        */
+        queue = { A, D, C, B };
+	tail = 2;
         current_entry = A;
         add_en = 1;
         added_entry = D;
@@ -90,131 +90,131 @@ module testbench();
 	    #10;
 	    check_ans();
 
-	    /*
+        /*
          Test 1: subtract current_entry
-         Before:
-         - Current state: C
-         - Queued states: [ A, C, B ]
+         Input:
+         - Current entry: C
+         - Queued entries: [ A, C, B ]
          - State to add: none
-         After:
-         - Current state in queue: yes
-         - Queued states: [ A, B ]
+         Output:
+         - Current entry in queue: yes
+         - Queued entries: [ A, B ]
          */
-	    queue = { D, B, C, A };
-	    tail = 3;
-        current_entry = C;
-        add_en = 0;
-        added_entry = D;
-	    next_queue_sub_expected = { D, D, B, A };
-        next_tail_sub_expected = 2;
-        current_entry_was_in_queue_expected = 1;
-	    #10;
-	    check_ans();
+       queue = { D, B, C, A };
+       tail = 3;
+       current_entry = C;
+       add_en = 0;
+       added_entry = D;
+       next_queue_sub_expected = { D, D, B, A };
+       next_tail_sub_expected = 2;
+       current_entry_was_in_queue_expected = 1;
+       #10;
+       check_ans();
 
-	    /*
+        /*
          Test 2: don't add because added_entry_in_queue
-         Before:
-         - Current state: C
-         - Queued states: [ A ]
+         Input:
+         - Current entry: C
+         - Queued entries: [ A ]
          - State to add: A
-         After:
-         - Current state in queue: no
-         - Queued states: [ A ]
+         Output:
+         - Current entry in queue: no
+         - Queued entries: [ A ]
          */
-	    queue = { D, B, C, A };
-	    tail = 1;
+        queue = { D, B, C, A };
+        tail = 1;
         current_entry = C;
         add_en = 1;
         added_entry = A;
-	    next_queue_sub_expected = { D, B, C, A };
+	next_queue_sub_expected = { D, B, C, A };
         next_tail_sub_expected = 1;
         current_entry_was_in_queue_expected = 0;
-	    #10;
-	    check_ans();
+	#10;
+        check_ans();
 
-	    /*
+        /*
          Test 3: don't subtract because tail is out of bounds
-         Before:
-         - Current state: D
-         - Queued states: [ A ]
+         Input:
+         - Current entry: D
+         - Queued entries: [ A ]
          - State to add: none
-         After:
-         - Current state in queue: no
-         - Queued states: [ A ]
+         Output:
+         - Current entry in queue: no
+         - Queued entries: [ A ]
          */
-	    queue = { B, D, C, A };
-	    tail = 1;
+        queue = { B, D, C, A };
+        tail = 1;
         current_entry = D;
         add_en = 0;
         added_entry = B;
-	    next_queue_sub_expected = { B, D, C, A };
+        next_queue_sub_expected = { B, D, C, A };
         next_tail_sub_expected = 1;
         current_entry_was_in_queue_expected = 0;
-	    #10;
-	    check_ans();
+        #10;
+        check_ans();
 
-	    /*
+        /*
          Test 4: add and subtract at the same time (different levels)
          Input:
-         - Current state: B
-         - Queued states: [ B ]
+         - Current entry: B
+         - Queued entries: [ B ]
          - States to add: A
          Output:
-         - Current state in queue: yes
-         - Queued states: [ A ]
+         - Current entry in queue: yes
+         - Queued entries: [ A ]
          */
-	    queue = { A, D, C, B };
-	    tail = 1;
+        queue = { A, D, C, B };
+        tail = 1;
         current_entry = B;
         add_en = 1;
         added_entry = A;
-	    next_queue_sub_expected = { A, A, D, A };
+        next_queue_sub_expected = { A, A, D, A };
         next_tail_sub_expected = 1;
         current_entry_was_in_queue_expected = 1;
-	    #10;
-	    check_ans();
+        #10;
+        check_ans();
 
-	    /*
+        /*
          Test 5: add and subtract at the same time (same level, full)
          Input: 
-         - Current state: C
-         - Queued states: [ D, C, A, B ]
+         - Current entry: C
+         - Queued entries: [ D, C, A, B ]
          - State to add: C
          Output:
-         - Current state in queue: yes
-         - Queued states: [ D, A, B ]
+         - Current entry in queue: yes
+         - Queued entries: [ D, A, B ]
          */
-	    queue = { B, A, C, D };
-	    tail = 4;
+        queue = { B, A, C, D };
+        tail = 4;
         current_entry = C;
         add_en = 1;
         added_entry = C;
-	    next_queue_sub_expected = { B, B, A, D };
+        next_queue_sub_expected = { B, B, A, D };
         next_tail_sub_expected = 3;
         current_entry_was_in_queue_expected = 1;
-	    #10;
-	    check_ans();
+        #10;
+        check_ans();
 
-	    /*
+        /*
          Test 6: add and subtract at the same time (same level, not full)
          Input:
-         - Current state: C
-         - Queued states: [ D, C, A ]
+         - Current entry: C
+         - Queued entries: [ D, C, A ]
          - State to add: C
          Output:
-         - Current state in queue: yes
-         - Queued state: [ D, A ]
+         - Current entry in queue: yes
+         - Queued entry: [ D, A ]
          */
-	    queue = { B, A, C, D };
-	    tail = 3;
+        queue = { B, A, C, D };
+        tail = 3;
         current_entry = C;
         add_en = 1;
         added_entry = C;
-	    next_queue_sub_expected = { B, B, A, D };
+        next_queue_sub_expected = { B, B, A, D };
         next_tail_sub_expected = 2;
         current_entry_was_in_queue_expected = 1;
-	    #10;
-	    check_ans();
+        #10;
+        check_ans();
     end
 
     // Run simulation (output to .vcd file).
