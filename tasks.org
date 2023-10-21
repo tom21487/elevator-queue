@@ -1,0 +1,20 @@
+最新版本的项目在平板上。
+- [X] Priority encoder testbench
+- [ ] engine.v testbench
+- [ ] elevator.v implementation
+- [ ] elevator.v testbench
+- [ ] Change clock HALF_PERIOD to 1s
+- [ ] Run elevator.v testbench on FPGA
+** TODO Ryan's algorithm
+Init: level = 0, dir = stop
+if (dir is up)
+  if (any above pressed)
+    dir_next = up
+  else if (any below pressed)
+    dir_next = down
+  else
+    dir_next = stop
+same for dir is down
+if (current_lvl pressed)
+  green_led = high
+Write a detailed Github post detailing algorithms and stuff.
