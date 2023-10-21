@@ -30,6 +30,7 @@ QUEUE_LOGIC_DEPS := queue_logic/queue_logic.v next_tail_add_logic/next_tail_add_
 queue_logic/testbench: queue_logic/testbench.v $(QUEUE_LOGIC_DEPS)
 	iverilog -o $@ $^
 
+# Archived - for FPGA
 PRIORITY_ENCODER_DEPS := priority_encoder/priority_encoder.v
 priority_encoder/testbench: priority_encoder/testbench.v $(PRIORITY_ENCODER_DEPS)
 	iverilog -o $@ $^
