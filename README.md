@@ -80,8 +80,8 @@ Output:
  - Queued entry: [ D, A ]
 ```
 ## Files
-- Makefile: Build information.
-- queue_logic/testbench.v: System-level testbench.
-- Every module has its own unit-level testbench.
-- diagrams.pdf: Block diagrams and digital circuits.
-- fpga/: Additional modules when using the design on an FPGA (ex. Lattice iCE40). This is only partially complete.
+- **Makefile**: Build information.
+- **queue_logic/testbench.v**: System-level testbench.
+  - Every module has its own unit-level testbench.
+- **diagrams.pdf**: Block diagrams and digital circuits.
+- **fpga/**: Additional modules when using the design on an FPGA (ex. Lattice iCE40). This is only partially complete.
